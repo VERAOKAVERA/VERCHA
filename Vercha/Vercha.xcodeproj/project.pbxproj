@@ -18,6 +18,10 @@
 		F5579FCF292F5259007B122D /* PillImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5579FCE292F5259007B122D /* PillImage.swift */; };
 		F5579FD2292F8921007B122D /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5579FD1292F8921007B122D /* ProfileCollectionViewCell.swift */; };
 		F5579FD4292F8A3E007B122D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5579FD3292F8A3E007B122D /* Profile.swift */; };
+		F5579FD6292F9866007B122D /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5579FD5292F9866007B122D /* MainPresenter.swift */; };
+		F5579FE229307746007B122D /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5579FE129307746007B122D /* CustomColor.swift */; };
+		F5579FE529308145007B122D /* MainModuleAssemply.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5579FE429308145007B122D /* MainModuleAssemply.swift */; };
+		F5579FE8293083E0007B122D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5579FE7293083E0007B122D /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		F5579FCE292F5259007B122D /* PillImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillImage.swift; sourceTree = "<group>"; };
 		F5579FD1292F8921007B122D /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		F5579FD3292F8A3E007B122D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		F5579FD5292F9866007B122D /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		F5579FE129307746007B122D /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		F5579FE429308145007B122D /* MainModuleAssemply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleAssemply.swift; sourceTree = "<group>"; };
+		F5579FE7293083E0007B122D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,7 @@
 		F5579FA8292F42DB007B122D /* Vercha */ = {
 			isa = PBXGroup;
 			children = (
+				F5579FE6293083D1007B122D /* Router */,
 				F5579FB7292F42DC007B122D /* Info.plist */,
 				F5579FC2292F4896007B122D /* UserStories */,
 				F5579FC0292F4864007B122D /* Services */,
@@ -102,6 +111,7 @@
 		F5579FC3292F489E007B122D /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				F5579FE329308127007B122D /* Assembly */,
 				F5579FC6292F48E7007B122D /* Model */,
 				F5579FC5292F48D5007B122D /* View */,
 				F5579FC4292F48CA007B122D /* Presenter */,
@@ -112,6 +122,7 @@
 		F5579FC4292F48CA007B122D /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				F5579FD5292F9866007B122D /* MainPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -139,11 +150,36 @@
 		F5579FC7292F48FF007B122D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F5579FE02930772A007B122D /* Constants */,
 				F5579FB2292F42DC007B122D /* Assets.xcassets */,
 				F5579FB4292F42DC007B122D /* LaunchScreen.storyboard */,
 				F5579FCA292F4CC9007B122D /* Main.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F5579FE02930772A007B122D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F5579FE129307746007B122D /* CustomColor.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		F5579FE329308127007B122D /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				F5579FE429308145007B122D /* MainModuleAssemply.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		F5579FE6293083D1007B122D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				F5579FE7293083E0007B122D /* Router.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,12 +192,15 @@
 				F5579FA2292F42DB007B122D /* Sources */,
 				F5579FA3292F42DB007B122D /* Frameworks */,
 				F5579FA4292F42DB007B122D /* Resources */,
+				F5579FDF292FA31D007B122D /* Swiftgen */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Vercha;
+			packageProductDependencies = (
+			);
 			productName = Vercha;
 			productReference = F5579FA6292F42DB007B122D /* Vercha.app */;
 			productType = "com.apple.product-type.application";
@@ -190,6 +229,8 @@
 				Base,
 			);
 			mainGroup = F5579F9D292F42DB007B122D;
+			packageReferences = (
+			);
 			productRefGroup = F5579FA7292F42DB007B122D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -212,6 +253,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F5579FDF292FA31D007B122D /* Swiftgen */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftgen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" …\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F5579FA2292F42DB007B122D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -221,10 +284,14 @@
 				F5579FD4292F8A3E007B122D /* Profile.swift in Sources */,
 				F5579FBF292F47FC007B122D /* MainViewController.swift in Sources */,
 				F5579FAA292F42DB007B122D /* AppDelegate.swift in Sources */,
+				F5579FE8293083E0007B122D /* Router.swift in Sources */,
+				F5579FD6292F9866007B122D /* MainPresenter.swift in Sources */,
 				F5579FD2292F8921007B122D /* ProfileCollectionViewCell.swift in Sources */,
 				F5579FCD292F4E68007B122D /* PillTableViewCell.swift in Sources */,
 				F5579FC9292F49CF007B122D /* Pill.swift in Sources */,
+				F5579FE229307746007B122D /* CustomColor.swift in Sources */,
 				F5579FAC292F42DB007B122D /* SceneDelegate.swift in Sources */,
+				F5579FE529308145007B122D /* MainModuleAssemply.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,11 +432,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vercha/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VERCHA;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -392,11 +460,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vercha/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VERCHA;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

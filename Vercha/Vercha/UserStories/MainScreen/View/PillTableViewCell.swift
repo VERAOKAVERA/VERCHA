@@ -15,7 +15,7 @@ class PillTableViewCell: UITableViewCell {
     private let pillCellView = UIView()
     private let pillImage = UIImageView()
     private let nameLabel = UILabel()
-    private let infoLabel = UILabel()
+    private var infoLabel = UILabel()
     private let tagView = UIView()
     private let doneButton = UIButton()
 
@@ -30,11 +30,16 @@ class PillTableViewCell: UITableViewCell {
         setupDoneButton()
     }
 
-    func configure(pill: Pill?, indexPath: IndexPath) {
-        pillImage.image = UIImage(named: "pill")
-        nameLabel.text = "Aspirin"
-        infoLabel.text = "10:00AM"
+    func configure(pill: Pill?) {
+        guard let pill = pill else { return }
+        pillImage.image = pill.image
+        nameLabel.text = pill.name
+        infoLabel.text = buildPillInfo(pill: pill)
+        doneButton.isHidden = !pill.status
+    }
 
+    private func buildPillInfo(pill: Pill) -> String {
+        return "\(pill.time) - \(pill.pillCount) - \(pill.eatingTime)"
     }
 
     private func setupMainView() {
@@ -52,10 +57,8 @@ class PillTableViewCell: UITableViewCell {
         mainView.clipsToBounds = true
         mainView.layer.shadowColor = UIColor.gray.cgColor
         mainView.layer.shadowOpacity = 0.9
-//        mainView.layer.shadowOffset = .zero
         mainView.layer.shadowRadius = 2
         mainView.layer.shadowOffset = CGSize(width: 0 , height: 1)
-//        mainView.backgroundColor = .lightGray
     }
 
     private func setupPillCellView() {
@@ -83,7 +86,6 @@ class PillTableViewCell: UITableViewCell {
             pillImage.heightAnchor.constraint(equalToConstant: 30),
             pillImage.widthAnchor.constraint(equalToConstant: 30)
         ])
-        pillImage.image = UIImage(systemName: "pill")
         pillImage.layer.borderWidth = 0.5
         pillImage.layer.borderColor = UIColor.lightGray.cgColor
         pillImage.layer.cornerRadius = 5
@@ -99,7 +101,6 @@ class PillTableViewCell: UITableViewCell {
             nameLabel.heightAnchor.constraint(equalToConstant: 20),
             nameLabel.widthAnchor.constraint(equalToConstant: 80)
         ])
-        nameLabel.text = "Aspirin"
         nameLabel.font = UIFont.boldSystemFont(ofSize: 20)
     }
 
@@ -112,7 +113,6 @@ class PillTableViewCell: UITableViewCell {
             infoLabel.heightAnchor.constraint(equalToConstant: 20),
             infoLabel.widthAnchor.constraint(equalToConstant: 250)
         ])
-        infoLabel.text = "10:00AM * 1 pill * After eating"
         infoLabel.textColor = .lightGray
         infoLabel.font = UIFont(name: "HelveticaNeue", size: 15)
     }
@@ -127,7 +127,7 @@ class PillTableViewCell: UITableViewCell {
             doneButton.widthAnchor.constraint(equalToConstant: 65)
         ])
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold, scale: .large)
-        doneButton.backgroundColor = .green
+        doneButton.backgroundColor = CustomColor.velvetLight
         doneButton.setImage(UIImage(systemName: "checkmark", withConfiguration: largeConfig), for: .normal)
         doneButton.imageView?.tintColor = .white
         doneButton.layer.cornerRadius = 65/2
