@@ -1,10 +1,3 @@
-//
-//  CustomColor.swift
-//  Vercha
-//
-//  Created by Vlad on 25/11/22.
-//
-
 import UIKit
 
 class CustomColor {

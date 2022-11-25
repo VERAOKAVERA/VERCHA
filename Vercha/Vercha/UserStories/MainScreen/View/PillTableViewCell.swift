@@ -1,14 +1,7 @@
-//
-//  PillTableViewCell.swift
-//  Vercha
-//
-//  Created by Vlad on 24/11/22.
-//
-
-import Foundation
 import UIKit
 
-class PillTableViewCell: UITableViewCell {
+final class PillTableViewCell: UITableViewCell {
+    // MARK: - Static properties
     static let identifier = "pillsTableViewCell"
     // MARK: - Private Properties
     private let mainView = UIView()
@@ -18,7 +11,6 @@ class PillTableViewCell: UITableViewCell {
     private var infoLabel = UILabel()
     private let tagView = UIView()
     private let doneButton = UIButton()
-
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -38,6 +30,7 @@ class PillTableViewCell: UITableViewCell {
         doneButton.isHidden = !pill.status
     }
 
+    // MARK: - Private func
     private func buildPillInfo(pill: Pill) -> String {
         return "\(pill.time) - \(pill.pillCount) - \(pill.eatingTime)"
     }
@@ -117,7 +110,7 @@ class PillTableViewCell: UITableViewCell {
         infoLabel.textColor = .lightGray
         infoLabel.font = UIFont(name: "HelveticaNeue", size: 15)
     }
-
+    
     private func setupDoneButton() {
         pillCellView.addSubview(doneButton)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
