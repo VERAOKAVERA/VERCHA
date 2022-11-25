@@ -1,28 +1,19 @@
-//
-//  MainViewController.swift
-//  Vercha
-//
-//  Created by Vlad on 24/11/22.
-//
-
-import Foundation
 import UIKit
 
 final class MainViewController: UIViewController {
-
+    // MARK: - Internal properties
     var presenter: MainViewPresenterProtocol?
-
-    let tableView = UITableView()
-    let addView = UIView()
-    let addButton = UIButton()
-    let collectionLayout = {
+    // MARK: - Private properties
+    private let tableView = UITableView()
+    private let addView = UIView()
+    private let addButton = UIButton()
+    private let collectionLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.scrollDirection = .horizontal
         return layout
     }()
     lazy var profilesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout)
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +27,8 @@ final class MainViewController: UIViewController {
         presenter?.setupPills()
 
     }
-
-    func setupCalendar() {}
+    // MARK: - Private func
+    private func setupCalendar() {}
     /// Создание коллекции с профилями
     private func setupCollectionView(){
         view.addSubview(profilesCollectionView)
@@ -105,12 +96,12 @@ final class MainViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - TableView
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
-// MARK: - UITableViewDataSource
+
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let pillsCount = presenter?.pills.count else { return 0}
@@ -126,12 +117,11 @@ extension MainViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - UICollectionViewDelegate
+// MARK: - CollectionView
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
 }
 
-// MARK: - UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let profilesCount = presenter?.profiles.count else { return 0 }
@@ -144,8 +134,14 @@ extension MainViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
+// MARK: - MainViewProtocol
 extension MainViewController: MainViewProtocol {
     func reloadTable() {
         tableView.reloadData()
+    }
+
+    func reloadCollectionView() {
+        profilesCollectionView.reloadData()
     }
 }

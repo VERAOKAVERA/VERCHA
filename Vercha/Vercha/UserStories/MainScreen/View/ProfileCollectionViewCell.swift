@@ -1,19 +1,12 @@
-//
-//  ProfileCollectionViewCell.swift
-//  Vercha
-//
-//  Created by Vlad on 24/11/22.
-//
-
-import Foundation
 import UIKit
 
-class ProfileCollectionViewCell: UICollectionViewCell {
+final class ProfileCollectionViewCell: UICollectionViewCell {
+    // MARK: - Static properties
  static let identifier = "profileCollectionViewCell"
-
-    let buttonView = UIButton()
-    let profileView = UIView()
-    let profileNameLabel = UILabel()
+    // MARK: - Private properties
+    private let buttonView = UIButton()
+    private let profileView = UIView()
+    private let profileNameLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +27,8 @@ class ProfileCollectionViewCell: UICollectionViewCell {
             buttonView.setImage(UIImage(named: profileImage), for: .normal)}
     }
 
-    func setupProfileLabel() {
+    // MARK: - Private func
+    private func setupProfileLabel() {
         profileView.addSubview(profileNameLabel)
         profileNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -46,7 +40,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
 
     }
 
-    func setupProfileView() {
+    private func setupProfileView() {
         addSubview(profileView)
         profileView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -61,7 +55,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
 
     }
 
-    func setupButtonView() {
+    private func setupButtonView() {
         profileView.addSubview(buttonView)
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -83,5 +77,3 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         buttonView.clipsToBounds = true
     }
 }
-
-
