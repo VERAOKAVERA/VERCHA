@@ -99,9 +99,10 @@ class PillTableViewCell: UITableViewCell {
             nameLabel.topAnchor.constraint(equalTo: pillCellView.topAnchor, constant: 25),
             nameLabel.leftAnchor.constraint(equalTo: pillImage.leftAnchor, constant: 40),
             nameLabel.heightAnchor.constraint(equalToConstant: 20),
-            nameLabel.widthAnchor.constraint(equalToConstant: 80)
+            nameLabel.widthAnchor.constraint(equalToConstant: 200)
         ])
         nameLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        nameLabel.numberOfLines = 1
     }
 
     private func setupInfo() {

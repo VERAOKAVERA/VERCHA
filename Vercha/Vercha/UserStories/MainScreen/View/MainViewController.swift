@@ -26,13 +26,15 @@ final class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.isNavigationBarHidden = true
         setupCollectionView()
         setupTableView()
         setupAddButtonView()
         setupAddButton()
         setupCalendar()
+        presenter?.setupProfileCollection()
         presenter?.setupPills()
+
     }
 
     func setupCalendar() {}
@@ -45,7 +47,7 @@ final class MainViewController: UIViewController {
         NSLayoutConstraint.activate([
             profilesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             profilesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            profilesCollectionView.heightAnchor.constraint(equalToConstant: 100),
+            profilesCollectionView.heightAnchor.constraint(equalToConstant: 140),
             profilesCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         ])
         profilesCollectionView.backgroundColor = .clear
@@ -94,7 +96,7 @@ final class MainViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: profilesCollectionView.bottomAnchor, constant: 10),
+            tableView.topAnchor.constraint(equalTo: profilesCollectionView.bottomAnchor, constant: 0),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60)
@@ -132,12 +134,13 @@ extension MainViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        7
+        guard let profilesCount = presenter?.profiles.count else { return 0 }
+        return profilesCount
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure()
+        cell.configure(profile: (presenter?.profiles[indexPath.row])!)
         return cell
     }
 }

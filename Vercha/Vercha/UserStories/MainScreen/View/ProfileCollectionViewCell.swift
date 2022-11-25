@@ -13,19 +13,37 @@ class ProfileCollectionViewCell: UICollectionViewCell {
 
     let buttonView = UIButton()
     let profileView = UIView()
+    let profileNameLabel = UILabel()
 
     override init(frame: CGRect) {
-            super.init(frame: frame)
-            setupProfileView()
+        super.init(frame: frame)
+        setupProfileView()
         setupButtonView()
-        }
+        setupProfileLabel()
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure() {
-        
+    func configure(profile: Profile) {
+        buttonView.backgroundColor = profile.profileColor
+        profileNameLabel.text = profile.profileName
+
+        if let profileImage = profile.profilePicture {
+            buttonView.setImage(UIImage(named: profileImage), for: .normal)}
+    }
+
+    func setupProfileLabel() {
+        profileView.addSubview(profileNameLabel)
+        profileNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            profileNameLabel.topAnchor.constraint(equalTo: buttonView.bottomAnchor, constant: 0),
+            profileNameLabel.leftAnchor.constraint(equalTo: buttonView.leftAnchor, constant: 8),
+            profileNameLabel.heightAnchor.constraint(equalToConstant: 30),
+            profileNameLabel.widthAnchor.constraint(equalToConstant: 100)
+        ])
+
     }
 
     func setupProfileView() {
@@ -54,13 +72,15 @@ class ProfileCollectionViewCell: UICollectionViewCell {
             buttonView.heightAnchor.constraint(equalToConstant: 90),
             buttonView.widthAnchor.constraint(equalToConstant: 90)
         ])
-        buttonView.backgroundColor = .white
-        buttonView.layer.cornerRadius = 40
         buttonView.setImage(UIImage(systemName: "person"), for: .normal)
+        buttonView.imageView?.tintColor = .white
         buttonView.layer.shadowColor = UIColor.gray.cgColor
         buttonView.layer.shadowOpacity = 0.9
         buttonView.layer.shadowOffset = .zero
         buttonView.layer.shadowRadius = 2
+        buttonView.layer.cornerRadius = 40
+        buttonView.imageView?.contentMode = .scaleAspectFill
+        buttonView.clipsToBounds = true
     }
 }
 
